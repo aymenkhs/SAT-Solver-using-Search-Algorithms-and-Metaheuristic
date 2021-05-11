@@ -14,4 +14,8 @@ public class Clause {
             }
         }
     }
+
+    public boolean contains(int x){
+        return literals.contains(x);
+    }
 }

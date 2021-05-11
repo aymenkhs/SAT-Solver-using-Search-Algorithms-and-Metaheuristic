@@ -15,6 +15,22 @@ public class SAT {
     }
 
     private void SATcreation(ArrayList<Clause> clauses){
+        ArrayList<Clause> temp;
         structureSAT = new ArrayList<>();
+        int i=1;
+        while(i<=n){
+            temp = new ArrayList<>();
+            for (Clause clause: clauses){
+                if (clause.contains(i)){
+                    temp.add(clause);
+                }
+            }
+            structureSAT.add(temp);
+            if (i<0){
+                i = -i + 1;
+            } else {
+                i = -i;
+            }
+        }
     }
 }
