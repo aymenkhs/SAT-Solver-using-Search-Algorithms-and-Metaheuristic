@@ -11,7 +11,7 @@ public class Clause {
         this.literals = new ArrayList<>();
         String[] parts = clauseString.split(" ");
         for (String part:parts){
-            if (!part.equals("0")){
+            if (!part.equals("0") && !part.isBlank()){
                 literals.add(Integer.parseInt(part));
             }
         }
@@ -19,5 +19,10 @@ public class Clause {
 
     public boolean contains(int x){
         return literals.contains(x);
+    }
+
+    @Override
+    public String toString() {
+        return "C" + numClause + " " + literals;
     }
 }
