@@ -3,9 +3,11 @@ package algorithms.sat_structure;
 import java.util.ArrayList;
 
 public class Clause {
-    private ArrayList<Integer> literals;
+    private final ArrayList<Integer> literals;
+    private final int numClause;
 
-    public Clause(String clauseString) {
+    public Clause(int numClause ,String clauseString) {
+        this.numClause = numClause;
         this.literals = new ArrayList<>();
         String[] parts = clauseString.split(" ");
         for (String part:parts){

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class SAT {
 
-    private int n, m;
+    private final int n, m;
     private ArrayList<ArrayList<Clause>> structureSAT;
 
     public SAT(int n, int m, ArrayList<Clause> clauses) {
@@ -32,5 +32,10 @@ public class SAT {
                 i = -i;
             }
         }
+    }
+
+    public ArrayList<Clause> get(int i){
+        int index = i>0?(i-1)*2:-2*i+1;
+        return structureSAT.get(index);
     }
 }
