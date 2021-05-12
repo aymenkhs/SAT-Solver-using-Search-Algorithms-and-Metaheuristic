@@ -1,12 +1,29 @@
 package algorithms;
 
-public class depth_first_search extends Algorithm{
-    public depth_first_search(String fileName) {
-        super(fileName);
+import java.util.ArrayList;
+
+public class depth_first_search extends Search_Algorithm{
+
+    @Override
+    protected Node set_Node_Value(Node node) {
+
+        // the value of the node is it's depth
+        node.setValue(node.getDepth());
+        return node;
     }
 
     @Override
-    protected void runAlgorithm() {
+    protected ArrayList<Node> insert_sorted_open(ArrayList<Node> open, Node node) {
 
-    }   
+        int i = 0;
+
+        // we insert in a sorted list décroissant by depth
+
+        while (i < open.size() && node.getDepth() < open.get(i).getDepth()){
+            i++;}
+
+        open.add(i, node);
+
+        return open;
+    }
 }

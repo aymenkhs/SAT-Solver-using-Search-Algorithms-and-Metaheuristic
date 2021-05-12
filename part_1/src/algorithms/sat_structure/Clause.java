@@ -25,4 +25,8 @@ public class Clause {
     public String toString() {
         return "C" + numClause + " " + literals;
     }
+
+    public ArrayList<Integer> getLiterals() {
+        return literals;
+    }
 }
