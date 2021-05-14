@@ -41,7 +41,7 @@ public abstract class Search_Algorithm {
             }
         }
 
-        // verrify whether the node satisies the SAT instance
+        // verify whether the node satisfies the SAT instance
         // note that the Node have a getValue and setValue methods
 
         return true;
@@ -101,8 +101,6 @@ public abstract class Search_Algorithm {
         // Solution not found
         System.out.println("Not satisfiable");
         return  null;
-
-
     }
 
 

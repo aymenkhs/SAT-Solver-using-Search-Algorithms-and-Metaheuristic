@@ -6,10 +6,10 @@ public class Node {
 
     private ArrayList<Integer> vars;
 
-    // this is the depth, it may be used as heuristic alone
+    // this is the depth, it may be used as a heuristic alone (in the case of the breadth first search)
     private int depth;
 
-    // value is the heuristic
+    // value is the f(x) value
     private  int value;
 
     public Node(int number_of_vars) {
