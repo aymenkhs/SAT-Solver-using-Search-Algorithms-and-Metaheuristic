@@ -37,7 +37,7 @@ public class SAT {
     }
 
     public ArrayList<Clause> get(int i){
-        int index = i>0?(i-1)*2:-2*i+1;
+        int index = i>0?(i-1)*2:-2*i-1;
         return structureSAT.get(index);
     }
 
