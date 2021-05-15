@@ -41,6 +41,14 @@ public class SAT {
         return structureSAT.get(index);
     }
 
+    public int getNbVariables() {
+        return n;
+    }
+
+    public int getNbClauses() {
+        return m;
+    }
+
     public static SAT createSAT(String fileName){
         ReadCnfFile CNFFile = new ReadCnfFile(fileName);
         ArrayList<Clause> clauses = new ArrayList<>();

@@ -1,5 +1,6 @@
 package algorithms;
 
+
 import java.util.ArrayList;
 
 public class Node {
@@ -25,7 +26,7 @@ public class Node {
     public Node(ArrayList<Integer> vars, int last_var_value, int depth){
 
         this.depth = depth;
-        this.vars = vars;
+        this.vars = new ArrayList<>(vars);
 
         for (int i = 0 ; i < vars.size() ; i++){
 

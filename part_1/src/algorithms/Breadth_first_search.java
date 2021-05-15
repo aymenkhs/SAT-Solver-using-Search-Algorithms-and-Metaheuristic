@@ -1,9 +1,15 @@
 package algorithms;
 
+import algorithms.sat_structure.SAT;
+
 import java.util.ArrayList;
 
 public class Breadth_first_search extends Search_Algorithm{
 
+
+    public Breadth_first_search(SAT sat) {
+        super(sat);
+    }
 
     @Override
     protected Node set_Node_Value(Node node) {
