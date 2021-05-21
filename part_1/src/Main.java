@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args){
-        SAT sat = SAT.createSAT("benchmark/uf75-01.cnf");
+        SAT sat = SAT.createSAT("exemple1.cnf");
 
         Breadth_first_search algo1 = new Breadth_first_search(sat);
         System.out.println( "breadth " +  algo1.solve(sat.getNbVariables()));

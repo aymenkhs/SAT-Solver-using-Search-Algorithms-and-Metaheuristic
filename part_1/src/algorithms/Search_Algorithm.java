@@ -98,11 +98,21 @@ public abstract class Search_Algorithm {
                     return node.getVars();
                 }
 
-                // if it's not a goal or it's not completed develop node
-                ArrayList<Integer> vars = node.getVars();
 
-                Node node_true = new Node(vars, 1, node.getDepth() + 1);
-                Node node_false = new Node(vars, 0, node.getDepth() + 1);
+                // if it's not a goal
+                Node node_true, node_false;
+
+                if (node.getCurrentVariable()+1 < sat.getNbVariables()){
+                    node_true = new Node(node, 1, new HashSet<>(sat.get(node.getCurrentVariable()+2)));
+                } else {
+                    node_true = new Node(node, 1, new HashSet<>());
+                }
+
+                if (node.getCurrentVariable()+1 < sat.getNbVariables()){
+                    node_false = new Node(node, 0, new HashSet<>(sat.get(-(node.getCurrentVariable()+2))));
+                } else {
+                    node_false = new Node(node, 0, new HashSet<>());
+                }
 
                 node_true = set_Node_Value(node_true);
                 node_false = set_Node_Value(node_false);

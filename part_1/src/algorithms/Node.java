@@ -1,7 +1,11 @@
 package algorithms;
 
 
+import algorithms.sat_structure.Clause;
+
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Node {
 
@@ -13,6 +17,9 @@ public class Node {
     // value is the f(x) value
     private  int value;
 
+    private Set<Clause> satisfiedClauses;
+    private int currentVariable;
+
     public Node(int number_of_vars) {
         this.vars = new ArrayList<>();
 
@@ -21,27 +28,34 @@ public class Node {
         }
 
         this.depth = 0;
+        this.currentVariable = -1;
+        this.satisfiedClauses = new HashSet<>();
     }
 
-    public Node(ArrayList<Integer> vars, int last_var_value, int depth){
+    public Node(Node node, int var_value, HashSet<Clause> satisfiableClauseVar){
+        this.depth = node.getDepth() + 1;
+        this.vars = new ArrayList<>(node.getVars());
+        this.satisfiedClauses = new HashSet<>(node.getSatisfiedClauses());
 
-        this.depth = depth;
-        this.vars = new ArrayList<>(vars);
-
-        for (int i = 0 ; i < vars.size() ; i++){
-
-            if(vars.get(i) != null) {
-                this.vars.set(i, vars.get(i));
-            }
-            else{
-               this.vars.set(i, last_var_value);
-                break;
-            }
+        this.currentVariable = node.getCurrentVariable() + 1;
+        if (currentVariable < vars.size()){
+            this.vars.set(currentVariable, var_value);
+            this.satisfiedClauses.addAll(satisfiableClauseVar);
         }
+
     }
+
 
     public ArrayList<Integer> getVars() {
         return vars;
+    }
+
+    public Set<Clause> getSatisfiedClauses() {
+        return satisfiedClauses;
+    }
+
+    public int getCurrentVariable() {
+        return currentVariable;
     }
 
     public void setValue(int value) {
