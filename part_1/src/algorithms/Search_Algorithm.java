@@ -12,14 +12,6 @@ import java.util.Set;
 public abstract class Search_Algorithm {
 
     protected SAT sat;
-    /*
-    public ArrayList<Integer> solve_time(int number_vars, ArrayList<Object> clauses){
-        long startTime = System.nanoTime( );
-        solve(number_vars, clauses);
-        long endTime = System.nanoTime( );
-        return null
-    }
-    */
 
     public Search_Algorithm(SAT sat) {
         this.sat = sat;
@@ -72,14 +64,14 @@ public abstract class Search_Algorithm {
         return false;
     }
 
-    public ArrayList<Integer> solve(int number_vars){
+    public ArrayList<Integer> solve(){
 
 
         ArrayList<Node> open = new ArrayList<>();
         ArrayList<Node> closed = new ArrayList<>();
 
         // initial node is a vector of null
-        Node initial_node = new Node(number_vars);
+        Node initial_node = new Node(sat.getNbVariables());
 
         open.add(initial_node);
 
@@ -128,5 +120,10 @@ public abstract class Search_Algorithm {
         return  null;
     }
 
-
+    public long solve_time(){
+        long startTime = System.nanoTime( );
+        this.solve();
+        long endTime = System.nanoTime( );
+        return endTime - startTime;
+    }
 }

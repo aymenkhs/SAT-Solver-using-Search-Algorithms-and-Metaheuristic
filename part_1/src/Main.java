@@ -12,22 +12,15 @@ public class Main {
         depth_first_search algo1 = new depth_first_search(sat);
         Breadth_first_search algo2 = new Breadth_first_search(sat);
         A_Star algo3 = new AStarHeuristic2(sat);
-        long startTime, endTime;
-        ArrayList<Integer> tab;
+        long time;
 
-        startTime = System.nanoTime( );
-        tab = algo3.solve(sat.getNbVariables());
-        endTime = System.nanoTime( );
-        System.out.println( "A* " +  tab + " " + (endTime - startTime));
+        time = algo3.solve_time();
+        System.out.println( "A* " + time);
 
-        startTime = System.nanoTime( );
-        tab = algo1.solve(sat.getNbVariables());
-        endTime = System.nanoTime( );
-        System.out.println( "depth " +  tab + " " + (endTime - startTime));
+        time = algo1.solve_time();
+        System.out.println( "depth " + time);
 
-        startTime = System.nanoTime( );
-        tab = algo2.solve(sat.getNbVariables());
-        endTime = System.nanoTime( );
-        System.out.println( "Breadth " +  tab + " " + (endTime - startTime));
+        time = algo2.solve_time();
+        System.out.println( "Breadth " + time);
     }
 }
