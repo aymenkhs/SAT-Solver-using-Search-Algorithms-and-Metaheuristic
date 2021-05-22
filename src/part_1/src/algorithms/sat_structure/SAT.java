@@ -1,5 +1,7 @@
 package part_1.src.algorithms.sat_structure;
 
+import part_1.src.services.ReadCnfFile;
+
 import java.util.ArrayList;
 
 public class SAT {
@@ -35,7 +37,28 @@ public class SAT {
     }
 
     public ArrayList<Clause> get(int i){
-        int index = i>0?(i-1)*2:-2*i+1;
+        int index = i>0?(i-1)*2:-2*i-1;
         return structureSAT.get(index);
+    }
+
+    public int getNbVariables() {
+        return n;
+    }
+
+    public int getNbClauses() {
+        return m;
+    }
+
+    public static SAT createSAT(String fileName){
+        ReadCnfFile CNFFile = new ReadCnfFile(fileName);
+        return createSAT(CNFFile);
+    }
+
+    public static SAT createSAT(ReadCnfFile CNFFile){
+        ArrayList<Clause> clauses = new ArrayList<>();
+        for(String clauseString : CNFFile.listClauses){
+            clauses.add(new Clause(CNFFile.listClauses.indexOf(clauseString), clauseString));
+        }
+        return new SAT(CNFFile.numVariables, CNFFile.numClauses, clauses);
     }
 }
