@@ -51,6 +51,10 @@ public class SAT {
 
     public static SAT createSAT(String fileName){
         ReadCnfFile CNFFile = new ReadCnfFile(fileName);
+        return createSAT(CNFFile);
+    }
+
+    public static SAT createSAT(ReadCnfFile CNFFile){
         ArrayList<Clause> clauses = new ArrayList<>();
         for(String clauseString : CNFFile.listClauses){
             clauses.add(new Clause(CNFFile.listClauses.indexOf(clauseString), clauseString));
