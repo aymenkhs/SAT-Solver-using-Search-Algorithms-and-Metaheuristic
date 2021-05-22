@@ -1,7 +1,4 @@
-import algorithms.AStarHeuristic1;
-import algorithms.A_Star;
-import algorithms.Breadth_first_search;
-import algorithms.depth_first_search;
+import algorithms.*;
 import algorithms.sat_structure.Clause;
 import algorithms.sat_structure.SAT;
 import services.ReadCnfFile;
@@ -14,7 +11,7 @@ public class Main {
 
         depth_first_search algo1 = new depth_first_search(sat);
         Breadth_first_search algo2 = new Breadth_first_search(sat);
-        A_Star algo3 = new AStarHeuristic1(sat);
+        A_Star algo3 = new AStarHeuristic2(sat);
         long startTime, endTime;
         ArrayList<Integer> tab;
 
