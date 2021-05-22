@@ -1,3 +1,5 @@
+import algorithms.AStarHeuristic1;
+import algorithms.A_Star;
 import algorithms.Breadth_first_search;
 import algorithms.depth_first_search;
 import algorithms.sat_structure.Clause;
@@ -10,9 +12,25 @@ public class Main {
     public static void main(String[] args){
         SAT sat = SAT.createSAT("exemple1.cnf");
 
-        Breadth_first_search algo1 = new Breadth_first_search(sat);
-        System.out.println( "breadth " +  algo1.solve(sat.getNbVariables()));
-        depth_first_search algo2 = new depth_first_search(sat);
-        System.out.println( "depth " +  algo2.solve(sat.getNbVariables()));
+        depth_first_search algo1 = new depth_first_search(sat);
+        Breadth_first_search algo2 = new Breadth_first_search(sat);
+        A_Star algo3 = new AStarHeuristic1(sat);
+        long startTime, endTime;
+        ArrayList<Integer> tab;
+
+        startTime = System.nanoTime( );
+        tab = algo3.solve(sat.getNbVariables());
+        endTime = System.nanoTime( );
+        System.out.println( "A* " +  tab + " " + (endTime - startTime));
+
+        startTime = System.nanoTime( );
+        tab = algo1.solve(sat.getNbVariables());
+        endTime = System.nanoTime( );
+        System.out.println( "depth " +  tab + " " + (endTime - startTime));
+
+        startTime = System.nanoTime( );
+        tab = algo2.solve(sat.getNbVariables());
+        endTime = System.nanoTime( );
+        System.out.println( "Breadth " +  tab + " " + (endTime - startTime));
     }
 }

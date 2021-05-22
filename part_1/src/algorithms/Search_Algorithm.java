@@ -86,7 +86,7 @@ public abstract class Search_Algorithm {
         while( ! open.isEmpty()) {
 
             Node node = open.get(0);
-            System.out.println( node.getDepth() );
+
             open.remove(0);
 
             if (!already_developed(node, closed)) {
