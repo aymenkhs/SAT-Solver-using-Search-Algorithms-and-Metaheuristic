@@ -1,17 +1,17 @@
 package services;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class ReadBenchmark {
 
     private static final String benchmarkFolder = "benchmark";
 
-    public static ArrayList<ReadCnfFile> readBenchmark(){
-        ArrayList<ReadCnfFile> files = new ArrayList<>();
+    public static HashMap<String,ReadCnfFile> readBenchmark(){
+        HashMap<String,ReadCnfFile> files = new HashMap<>();
         for(String file : Objects.requireNonNull(new File(benchmarkFolder).list())){
-            files.add(new ReadCnfFile(benchmarkFolder + File.separator + file));
+            files.put(file, new ReadCnfFile(benchmarkFolder + File.separator + file));
         }
         return files;
     }

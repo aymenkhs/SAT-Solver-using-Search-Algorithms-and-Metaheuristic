@@ -1,3 +1,6 @@
 *.idea/
 *out/
 *.iml
+
+# cnf files to test the app 
+*tests_exemples/

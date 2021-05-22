@@ -13,6 +13,8 @@ public abstract class Search_Algorithm {
 
     protected SAT sat;
 
+    protected boolean isSatisfiable;
+
     public Search_Algorithm(SAT sat) {
         this.sat = sat;
     }
@@ -86,7 +88,7 @@ public abstract class Search_Algorithm {
                 closed.add(node);
 
                 if (is_goal(node)) {
-
+                    this.isSatisfiable = true;
                     return node.getVars();
                 }
 
@@ -125,5 +127,9 @@ public abstract class Search_Algorithm {
         this.solve();
         long endTime = System.nanoTime( );
         return endTime - startTime;
+    }
+
+    public boolean isSatisfiable() {
+        return isSatisfiable;
     }
 }

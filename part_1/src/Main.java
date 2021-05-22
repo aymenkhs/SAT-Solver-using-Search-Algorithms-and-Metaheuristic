@@ -1,12 +1,21 @@
 import algorithms.*;
 import algorithms.sat_structure.Clause;
 import algorithms.sat_structure.SAT;
+import services.ReadBenchmark;
 import services.ReadCnfFile;
+import services.WriteCSV;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args){
+        HashMap<String,SAT> sats;
+
+        WriteCSV.writeBFS(ReadBenchmark.readBenchmark());
+
+
+
         SAT sat = SAT.createSAT("exemple1.cnf");
 
         depth_first_search algo1 = new depth_first_search(sat);
