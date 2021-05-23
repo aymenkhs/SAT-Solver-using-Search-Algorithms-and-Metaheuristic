@@ -1,6 +1,7 @@
-package part_1.src.algorithms.sat_structure;
+package part_1.algorithms.sat_structure;
 
-import part_1.src.services.ReadCnfFile;
+
+import part_1.services.ReadCnfFile;
 
 import java.util.ArrayList;
 

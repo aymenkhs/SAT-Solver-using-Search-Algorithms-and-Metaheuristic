@@ -1,4 +1,4 @@
-package part_1.src.services;
+package part_1.services;
 
 import java.io.File;
 import java.io.FileNotFoundException;

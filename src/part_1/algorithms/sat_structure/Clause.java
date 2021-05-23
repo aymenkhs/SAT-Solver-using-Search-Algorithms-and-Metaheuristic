@@ -1,4 +1,4 @@
-package part_1.src.algorithms.sat_structure;
+package part_1.algorithms.sat_structure;
 
 import java.util.ArrayList;
 

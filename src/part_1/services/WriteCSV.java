@@ -1,8 +1,8 @@
-package part_1.src.services;
+package part_1.services;
 
-import part_1.src.algorithms.Breadth_first_search;
-import part_1.src.algorithms.Search_Algorithm;
-import part_1.src.algorithms.sat_structure.SAT;
+import part_1.algorithms.Breadth_first_search;
+import part_1.algorithms.Search_Algorithm;
+import part_1.algorithms.sat_structure.SAT;
 
 import java.io.File;
 import java.io.FileWriter;

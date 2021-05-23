@@ -1,7 +1,6 @@
-package part_1.src.algorithms.sat_structure;
+package part_1.algorithms;
 
-import part_1.src.algorithms.Node;
-import part_1.src.algorithms.Search_Algorithm;
+import part_1.algorithms.sat_structure.SAT;
 import java.util.ArrayList;
 
 public abstract class A_Star extends Search_Algorithm {

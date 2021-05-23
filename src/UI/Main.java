@@ -5,11 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import part_1.src.algorithms.sat_structure.Clause;
-import part_1.src.algorithms.sat_structure.SAT;
-import part_1.src.services.ReadCnfFile;
-
-import java.util.ArrayList;
 
 
 public class Main extends Application {

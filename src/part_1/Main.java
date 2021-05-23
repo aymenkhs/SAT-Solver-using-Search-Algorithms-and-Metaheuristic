@@ -1,12 +1,12 @@
-package part_1.src;
+package part_1;
 
-import part_1.src.algorithms.AStarHeuristic2;
-import part_1.src.algorithms.Breadth_first_search;
-import part_1.src.algorithms.depth_first_search;
-import part_1.src.algorithms.sat_structure.A_Star;
-import part_1.src.algorithms.sat_structure.SAT;
-import part_1.src.services.ReadBenchmark;
-import part_1.src.services.WriteCSV;
+import part_1.algorithms.AStarHeuristic2;
+import part_1.algorithms.Breadth_first_search;
+import part_1.algorithms.depth_first_search;
+import part_1.algorithms.A_Star;
+import part_1.algorithms.sat_structure.SAT;
+import part_1.services.ReadBenchmark;
+import part_1.services.WriteCSV;
 
 import java.util.HashMap;
 
