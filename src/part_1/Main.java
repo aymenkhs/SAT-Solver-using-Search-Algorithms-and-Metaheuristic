@@ -12,13 +12,9 @@ import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args){
-        HashMap<String,SAT> sats;
+        //WriteCSV.writeBFS(ReadBenchmark.readBenchmark());
 
-        WriteCSV.writeBFS(ReadBenchmark.readBenchmark());
-
-
-
-        SAT sat = SAT.createSAT("exemple1.cnf");
+        SAT sat = SAT.createSAT("tests_exemples/exemple1.cnf");
 
         depth_first_search algo1 = new depth_first_search(sat);
         Breadth_first_search algo2 = new Breadth_first_search(sat);

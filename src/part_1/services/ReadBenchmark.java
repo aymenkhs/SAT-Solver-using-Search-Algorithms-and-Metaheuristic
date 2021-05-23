@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class ReadBenchmark {
 
-    private static final String benchmarkFolder = "src/part_1/benchmark";
+    private static final String benchmarkFolder = "benchmarks";
 
     public static HashMap<String,ReadCnfFile> readBenchmark(){
         System.out.println(System.getProperty("user.dir"));
