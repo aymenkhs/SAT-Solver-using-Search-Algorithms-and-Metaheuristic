@@ -81,7 +81,7 @@ public abstract class Search_Algorithm {
 
             open.remove(0);
 
-            if (!already_developed(node, closed)) {
+            if (!already_developed(node, closed) && node.getDepth() < sat.getNbVariables()) {
 
                 closed.add(node);
 
