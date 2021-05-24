@@ -52,23 +52,9 @@ public abstract class Search_Algorithm {
         return clausesSatisfaites.size() == sat.getNbClauses();
     }
 
-    private boolean already_developed(Node node, ArrayList<Node> closed){
-
-        for (Node n : closed) {
-
-            if (node.getVars().equals(n.getVars())) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     public ArrayList<Integer> solve(){
 
-
         ArrayList<Node> open = new ArrayList<>();
-        ArrayList<Node> closed = new ArrayList<>();
 
         // initial node is a vector of null
         Node initial_node = new Node(sat.getNbVariables());
@@ -81,15 +67,12 @@ public abstract class Search_Algorithm {
 
             open.remove(0);
 
-            if (!already_developed(node, closed) && node.getDepth() < sat.getNbVariables()) {
+            if (is_goal(node)) {
+                this.isSatisfiable = true;
+                return node.getVars();
+            }
 
-                closed.add(node);
-
-                if (is_goal(node)) {
-                    this.isSatisfiable = true;
-                    return node.getVars();
-                }
-
+            if (node.getDepth() < sat.getNbVariables()) {
 
                 // if it's not a goal
                 Node node_true, node_false;
