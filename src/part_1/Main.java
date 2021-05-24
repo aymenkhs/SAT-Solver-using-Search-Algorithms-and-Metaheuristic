@@ -1,9 +1,6 @@
 package part_1;
 
-import part_1.algorithms.AStarHeuristic2;
-import part_1.algorithms.Breadth_first_search;
-import part_1.algorithms.depth_first_search;
-import part_1.algorithms.A_Star;
+import part_1.algorithms.*;
 import part_1.algorithms.sat_structure.SAT;
 import part_1.services.ReadBenchmark;
 import part_1.services.WriteCSV;
@@ -18,7 +15,7 @@ public class Main {
 
         depth_first_search algo1 = new depth_first_search(sat);
         Breadth_first_search algo2 = new Breadth_first_search(sat);
-        A_Star algo3 = new AStarHeuristic2(sat);
+        A_Star algo3 = new AStarHeuristic1(sat);
         long time;
 
         time = algo3.solve_time();

@@ -24,7 +24,6 @@ public abstract class Search_Algorithm {
     protected abstract ArrayList<Node> insert_sorted_open(ArrayList<Node> open , Node node);
 
 
-
     private boolean is_goal(Node node){
 
 
@@ -32,10 +31,6 @@ public abstract class Search_Algorithm {
         Set<Clause> clausesSatisfaites = new HashSet<Clause>();
 
         for (int i = 0 ; i < node.getVars().size() ; i++){
-
-            if(vars.get(i) == null){
-                return false;
-            }
 
             if(vars.get(i) == 1){
                 clausesSatisfaites.addAll(sat.get(i+1));
@@ -56,7 +51,7 @@ public abstract class Search_Algorithm {
         ArrayList<Node> open = new ArrayList<>();
 
         // initial node is a vector of null
-        Node initial_node = new Node(sat.getNbVariables());
+        Node initial_node = new Node();
 
         open.add(initial_node);
 
@@ -76,14 +71,14 @@ public abstract class Search_Algorithm {
                 // if it's not a goal
                 Node node_true, node_false;
 
-                if (node.getCurrentVariable()+1 < sat.getNbVariables()){
-                    node_true = new Node(node, 1, new HashSet<>(sat.get(node.getCurrentVariable()+2)));
+                if (node.getDepth() < sat.getNbVariables()){
+                    node_true = new Node(node, 1, new HashSet<>(sat.get(node.getDepth()+1)));
                 } else {
                     node_true = new Node(node, 1, new HashSet<>());
                 }
 
-                if (node.getCurrentVariable()+1 < sat.getNbVariables()){
-                    node_false = new Node(node, 0, new HashSet<>(sat.get(-(node.getCurrentVariable()+2))));
+                if (node.getDepth() < sat.getNbVariables()){
+                    node_false = new Node(node, 0, new HashSet<>(sat.get(-(node.getDepth()+1))));
                 } else {
                     node_false = new Node(node, 0, new HashSet<>());
                 }

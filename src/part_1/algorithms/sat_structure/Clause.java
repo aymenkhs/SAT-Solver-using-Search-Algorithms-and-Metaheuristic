@@ -23,7 +23,7 @@ public class Clause {
 
     @Override
     public String toString() {
-        return "C" + numClause + " " + literals;
+        return "C" + numClause;
     }
 
     public ArrayList<Integer> getLiterals() {

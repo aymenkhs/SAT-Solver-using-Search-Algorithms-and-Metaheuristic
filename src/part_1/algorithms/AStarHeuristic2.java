@@ -14,7 +14,7 @@ public class AStarHeuristic2 extends A_Star {
 
     @Override
     protected int heuristic(Node node) {
-        int current = node.getCurrentVariable();
+        int current = node.getDepth()-1;
         if (current == 1){
             HashSet<Clause> set = new HashSet<>(sat.get(current + 1));
             set.addAll(node.getSatisfiedClauses());
