@@ -58,7 +58,7 @@ public abstract class Search_Algorithm {
         while( ! open.isEmpty()) {
 
             Node node = open.get(0);
-
+            //System.out.println( node.getDepth() + " " + node.getVars() + " " +  node.getSatisfiedClauses() + " " + node.getValue());
             open.remove(0);
 
             if (is_goal(node)) {
@@ -71,17 +71,8 @@ public abstract class Search_Algorithm {
                 // if it's not a goal
                 Node node_true, node_false;
 
-                if (node.getDepth() < sat.getNbVariables()){
-                    node_true = new Node(node, 1, new HashSet<>(sat.get(node.getDepth()+1)));
-                } else {
-                    node_true = new Node(node, 1, new HashSet<>());
-                }
-
-                if (node.getDepth() < sat.getNbVariables()){
-                    node_false = new Node(node, 0, new HashSet<>(sat.get(-(node.getDepth()+1))));
-                } else {
-                    node_false = new Node(node, 0, new HashSet<>());
-                }
+                node_true = new Node(node, 1, new HashSet<>(sat.get(node.getDepth()+1)));
+                node_false = new Node(node, 0, new HashSet<>(sat.get(-(node.getDepth()+1))));
 
                 node_true = set_Node_Value(node_true);
                 node_false = set_Node_Value(node_false);
