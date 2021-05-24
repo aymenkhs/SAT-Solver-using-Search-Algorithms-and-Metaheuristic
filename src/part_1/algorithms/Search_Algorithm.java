@@ -28,8 +28,6 @@ public abstract class Search_Algorithm {
     private boolean is_goal(Node node){
 
 
-        // if the node is not completed, then it's not a goal
-        // exemple : 1 0 1 0 0 null null null
         ArrayList<Integer>vars = node.getVars();
         Set<Clause> clausesSatisfaites = new HashSet<Clause>();
 
@@ -44,12 +42,13 @@ public abstract class Search_Algorithm {
             } else {
                 clausesSatisfaites.addAll(sat.get(-(i+1)));
             }
+
+            if (clausesSatisfaites.size() == sat.getNbClauses()){
+                return true;
+            }
+
         }
-
-        // verify whether the node satisfies the SAT instance
-        // note that the Node have a getValue and setValue methods
-
-        return clausesSatisfaites.size() == sat.getNbClauses();
+        return false;
     }
 
     public ArrayList<Integer> solve(){
