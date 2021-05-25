@@ -2,11 +2,14 @@ package part_1;
 
 import part_1.algorithms.*;
 import part_1.algorithms.sat_structure.SAT;
+import part_1.services.ReadBenchmark;
+import part_1.services.WriteCSV;
 
 public class Main {
     public static void main(String[] args){
-        //WriteCSV.writeBFS(ReadBenchmark.readBenchmark25());
-
+        //WriteCSV.writeDFS(ReadBenchmark.readBenchmark20(), 4, 20, 4);
+        WriteCSV.writeAStar(ReadBenchmark.readBenchmark20());
+        WriteCSV.writeBFS(ReadBenchmark.readBenchmark20());
         SAT sat = SAT.createSAT("benchmarks20/uf20-01.cnf");
 
         depth_first_search algo1 = new depth_first_search(sat);
