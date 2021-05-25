@@ -15,7 +15,7 @@ public class Main {
 
         depth_first_search algo1 = new depth_first_search(sat);
         Breadth_first_search algo2 = new Breadth_first_search(sat);
-        A_Star algo3 = new AStarHeuristic3(sat);
+        A_Star algo3 = new AStarHeuristic5(sat);
         long time;
 
         time = algo3.solve_time();
