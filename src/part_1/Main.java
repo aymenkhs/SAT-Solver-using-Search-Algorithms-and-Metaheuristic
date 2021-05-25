@@ -2,10 +2,6 @@ package part_1;
 
 import part_1.algorithms.*;
 import part_1.algorithms.sat_structure.SAT;
-import part_1.services.ReadBenchmark;
-import part_1.services.WriteCSV;
-
-import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args){
@@ -15,7 +11,7 @@ public class Main {
 
         depth_first_search algo1 = new depth_first_search(sat);
         Breadth_first_search algo2 = new Breadth_first_search(sat);
-        A_Star algo3 = new AStarHeuristic5(sat);
+        A_Star algo3 = new AStarHeuristic2(sat);
         long time;
 
         time = algo3.solve_time();

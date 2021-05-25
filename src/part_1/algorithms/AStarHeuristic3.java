@@ -10,6 +10,6 @@ public class AStarHeuristic3 extends A_Star {
 
     @Override
     protected int heuristic(Node node) {
-        return node.getSatisfiedClauses().size();
+        return node.getSatisfiableClauseVar().size();
     }
 }
