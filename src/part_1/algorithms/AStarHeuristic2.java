@@ -15,7 +15,7 @@ public class AStarHeuristic2 extends A_Star {
     @Override
     protected int heuristic(Node node) {
         HashSet<Clause> set = new HashSet<>(node.getSatisfiableClauseVar());
-        set.addAll(node.getSatisfiedClauses());
+        set.removeAll(node.getSatisfiedClauses());
         return set.size();
     }
 }

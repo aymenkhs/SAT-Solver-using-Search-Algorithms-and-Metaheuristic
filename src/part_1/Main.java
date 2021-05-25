@@ -11,11 +11,11 @@ public class Main {
     public static void main(String[] args){
         //WriteCSV.writeBFS(ReadBenchmark.readBenchmark25());
 
-        SAT sat = SAT.createSAT("benchmarks/uf20-01.cnf");
+        SAT sat = SAT.createSAT("benchmarks20/uf20-01.cnf");
 
         depth_first_search algo1 = new depth_first_search(sat);
         Breadth_first_search algo2 = new Breadth_first_search(sat);
-        A_Star algo3 = new AStarHeuristic1(sat);
+        A_Star algo3 = new AStarHeuristic3(sat);
         long time;
 
         time = algo3.solve_time();
