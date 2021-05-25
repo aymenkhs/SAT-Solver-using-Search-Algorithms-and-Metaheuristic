@@ -81,4 +81,22 @@ public abstract class Search_Algorithm {
     public boolean isSatisfiable() {
         return isSatisfiable;
     }
+
+    public int binarySearch(LinkedList<Node> open, int value){
+        int a = 0, b = open.size() - 1;
+        int c = (a + b)/2;
+
+        while (a <= b) {
+            c = (a + b)/2;
+            if (open.get(c).getValue() == value){
+                return c;
+            } else if (open.get(c).getValue() < value){
+                b = c-1;
+            } else {
+                a = c+1;
+            }
+        }
+
+        return open.get(c).getValue() < value ? c : c + 1;
+    }
 }

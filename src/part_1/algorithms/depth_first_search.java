@@ -20,16 +20,13 @@ public class depth_first_search extends Search_Algorithm{
 
     @Override
     protected LinkedList<Node> insert_sorted_open(LinkedList<Node> open, Node node) {
+        if (open.isEmpty()){
+            open.add(node);
+            return open;
+        }
 
-        int i = 0;
-
-        // we insert in a sorted list décroissant by depth
-
-        while (i < open.size() && node.getDepth() < open.get(i).getDepth()){
-            i++;}
-
+        int i = binarySearch(open, node.getValue());
         open.add(i, node);
-
         return open;
     }
 }

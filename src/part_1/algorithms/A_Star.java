@@ -19,10 +19,12 @@ public abstract class A_Star extends Search_Algorithm {
 
     @Override
     protected LinkedList<Node> insert_sorted_open(LinkedList<Node> open, Node node) {
-        int i = 0;
-        while(i < open.size() && open.get(i).getValue() > node.getValue()){
-            i++;
+        if (open.isEmpty()){
+            open.add(node);
+            return open;
         }
+
+        int i = binarySearch(open, node.getValue());
         open.add(i, node);
         return open;
     }
