@@ -76,11 +76,12 @@ public abstract class Search_Algorithm {
         return  null;
     }
 
-    public long solve_time(){
+    public double solve_time(){
         long startTime = System.nanoTime( );
         this.solve();
         long endTime = System.nanoTime( );
-        return endTime - startTime;
+        long results =  (endTime - startTime);
+        return (double) results/1000000000;
     }
 
     public boolean isSatisfiable() {

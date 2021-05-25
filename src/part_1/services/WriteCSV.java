@@ -13,7 +13,7 @@ public class WriteCSV {
     private static final String resultsFolder = "results";
 
     public static void writeBFS(HashMap<String, ReadCnfFile> satStructures){
-        long time;
+        double time;
         Search_Algorithm algorithm;
 
         File directory = new File(resultsFolder  + File.separator+ "part1");
@@ -42,7 +42,7 @@ public class WriteCSV {
     }
 
     public static void writeDFS(HashMap<String, ReadCnfFile> satStructures, int begin, int end, int step){
-        long time;
+        double time;
         Search_Algorithm algorithm;
 
         File directory = new File(resultsFolder  + File.separator+ "part1");
@@ -73,9 +73,6 @@ public class WriteCSV {
     }
 
     public static void writeAStar(HashMap<String, ReadCnfFile> satStructures){
-
-
-
         File directory = new File(resultsFolder  + File.separator+ "part1");
         if (! directory.exists()){
             directory.mkdir();
@@ -103,7 +100,7 @@ public class WriteCSV {
 
     private static String ExecutingWichHeuristic(SAT sat, int i, String bench){
         A_Star algorithm;
-        long time;
+        double time;
 
         switch (i){
             case 1:

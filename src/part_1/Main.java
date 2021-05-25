@@ -7,15 +7,15 @@ import part_1.services.WriteCSV;
 
 public class Main {
     public static void main(String[] args){
-        //WriteCSV.writeDFS(ReadBenchmark.readBenchmark20(), 4, 20, 4);
         WriteCSV.writeAStar(ReadBenchmark.readBenchmark20());
+        WriteCSV.writeDFS(ReadBenchmark.readBenchmark20(), 4, 20, 4);
         WriteCSV.writeBFS(ReadBenchmark.readBenchmark20());
         SAT sat = SAT.createSAT("benchmarks20/uf20-01.cnf");
 
         depth_first_search algo1 = new depth_first_search(sat);
         Breadth_first_search algo2 = new Breadth_first_search(sat);
         A_Star algo3 = new AStarHeuristic2(sat);
-        long time;
+        double time;
 
         time = algo3.solve_time();
         System.out.println( "A* " + time);
