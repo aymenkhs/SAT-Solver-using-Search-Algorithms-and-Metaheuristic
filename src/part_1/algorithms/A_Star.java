@@ -12,7 +12,7 @@ public abstract class A_Star extends Search_Algorithm {
     @Override
     protected Node set_Node_Value(Node node) {
         int H = heuristic(node);
-        int G = node.getSatisfiedClauses().size();
+        int G = node.getSatisfiedClausesNode().size();
         node.setValue(G + H);
         return node;
     }

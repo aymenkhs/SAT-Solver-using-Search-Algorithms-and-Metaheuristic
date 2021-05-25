@@ -10,11 +10,6 @@ public class AStarHeuristic1 extends A_Star {
 
     @Override
     protected int heuristic(Node node) {
-        int current = node.getDepth()-1;
-        if (current == 1){
-            return sat.get(current + 1).size();
-        } else {
-            return sat.get(-(current + 1)).size();
-        }
+        return node.getSatisfiableClauseVar().size();
     }
 }

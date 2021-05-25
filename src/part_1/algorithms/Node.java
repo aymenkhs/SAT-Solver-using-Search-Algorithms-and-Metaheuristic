@@ -17,20 +17,22 @@ public class Node {
     // value is the f(x) value
     private  int value;
 
-    private Set<Clause> satisfiedClauses;
+    private final Set<Clause> satisfiedClausesNode;
+    private Set<Clause> satisfiableClauseVar;
 
     public Node() {
         this.vars = new ArrayList<>();
         this.depth = 0;
-        this.satisfiedClauses = new HashSet<>();
+        this.satisfiedClausesNode = new HashSet<>();
+        this.satisfiableClauseVar = new HashSet<>();
     }
 
     public Node(Node node, int var_value, HashSet<Clause> satisfiableClauseVar){
         this.depth = node.getDepth() + 1;
         this.vars = new ArrayList<>(node.getVars());
-        this.satisfiedClauses = new HashSet<>(node.getSatisfiedClauses());
+        this.satisfiedClausesNode = new HashSet<>(node.getSatisfiedClauses());
         this.vars.add(var_value);
-        this.satisfiedClauses.addAll(satisfiableClauseVar);
+        this.satisfiableClauseVar = satisfiableClauseVar;
     }
 
     public ArrayList<Integer> getVars() {
@@ -38,7 +40,17 @@ public class Node {
     }
 
     public Set<Clause> getSatisfiedClauses() {
+        Set<Clause> satisfiedClauses = new HashSet<>(satisfiedClausesNode);
+        satisfiedClauses.addAll(satisfiableClauseVar);
         return satisfiedClauses;
+    }
+
+    public Set<Clause> getSatisfiedClausesNode() {
+        return satisfiedClausesNode;
+    }
+
+    public Set<Clause> getSatisfiableClauseVar() {
+        return satisfiableClauseVar;
     }
 
     public void setValue(int value) {

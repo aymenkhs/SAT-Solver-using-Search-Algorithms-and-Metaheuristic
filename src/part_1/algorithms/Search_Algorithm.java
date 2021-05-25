@@ -26,24 +26,7 @@ public abstract class Search_Algorithm {
 
     private boolean is_goal(Node node){
 
-
-        ArrayList<Integer>vars = node.getVars();
-        Set<Clause> clausesSatisfaites = new HashSet<Clause>();
-
-        for (int i = 0 ; i < node.getVars().size() ; i++){
-
-            if(vars.get(i) == 1){
-                clausesSatisfaites.addAll(sat.get(i+1));
-            } else {
-                clausesSatisfaites.addAll(sat.get(-(i+1)));
-            }
-
-            if (clausesSatisfaites.size() == sat.getNbClauses()){
-                return true;
-            }
-
-        }
-        return false;
+        return node.getSatisfiedClauses().size() == sat.getNbClauses();
     }
 
     public ArrayList<Integer> solve(){
@@ -58,7 +41,7 @@ public abstract class Search_Algorithm {
         while( ! open.isEmpty()) {
 
             Node node = open.get(0);
-            //System.out.println( node.getDepth() + " " + node.getVars() + " " +  node.getSatisfiedClauses() + " " + node.getValue());
+            //System.out.println( node.getDepth() + " " + node.getValue()  + " " + node.getVars() + " " +  node.getSatisfiedClauses() + node.getSatisfiedClausesNode() + node.getSatisfiableClauseVar() );
             open.remove(0);
 
             if (is_goal(node)) {
