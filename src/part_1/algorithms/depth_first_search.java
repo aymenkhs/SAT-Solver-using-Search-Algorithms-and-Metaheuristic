@@ -2,7 +2,7 @@ package part_1.algorithms;
 
 import part_1.algorithms.sat_structure.SAT;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class depth_first_search extends Search_Algorithm{
 
@@ -19,7 +19,7 @@ public class depth_first_search extends Search_Algorithm{
     }
 
     @Override
-    protected ArrayList<Node> insert_sorted_open(ArrayList<Node> open, Node node) {
+    protected LinkedList<Node> insert_sorted_open(LinkedList<Node> open, Node node) {
 
         int i = 0;
 

@@ -1,11 +1,11 @@
 package part_1.algorithms;
 
-import part_1.algorithms.sat_structure.Clause;
+
 import part_1.algorithms.sat_structure.SAT;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Set;
+import java.util.LinkedList;
 
 public abstract class Search_Algorithm {
 
@@ -21,7 +21,7 @@ public abstract class Search_Algorithm {
     protected abstract Node set_Node_Value(Node node);
 
     // open is a sorted list
-    protected abstract ArrayList<Node> insert_sorted_open(ArrayList<Node> open , Node node);
+    protected abstract LinkedList<Node> insert_sorted_open(LinkedList<Node> open , Node node);
 
 
     private boolean is_goal(Node node){
@@ -31,7 +31,7 @@ public abstract class Search_Algorithm {
 
     public ArrayList<Integer> solve(){
 
-        ArrayList<Node> open = new ArrayList<>();
+        LinkedList<Node> open = new LinkedList<>();
 
         // initial node is a vector of null
         Node initial_node = new Node();
