@@ -13,6 +13,8 @@ public abstract class Search_Algorithm {
 
     protected boolean isSatisfiable;
 
+    protected int limit = -1;
+
     public Search_Algorithm(SAT sat) {
         this.sat = sat;
     }
@@ -49,9 +51,12 @@ public abstract class Search_Algorithm {
                 return node.getVars();
             }
 
-            if (node.getDepth() < sat.getNbVariables()) {
+            // if it's not a goal
 
-                // if it's not a goal
+            if (node.getDepth() < sat.getNbVariables() && node.getDepth() != limit ) {
+                // if we are at depth max or we reached the limit then we don't developpe this node
+                // the limit is a value that can be specified by DFS Algorithm.
+
                 Node node_true, node_false;
 
                 node_true = new Node(node, 1, new HashSet<>(sat.get(node.getDepth()+1)));

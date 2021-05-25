@@ -10,6 +10,12 @@ public class depth_first_search extends Search_Algorithm{
         super(sat);
     }
 
+
+    public depth_first_search(SAT sat, int limitDepth) {
+        super(sat);
+        this.limit = limitDepth;
+    }
+
     @Override
     protected Node set_Node_Value(Node node) {
 
