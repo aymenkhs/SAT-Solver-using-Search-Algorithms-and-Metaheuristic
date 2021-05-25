@@ -6,13 +6,23 @@ import java.util.Objects;
 
 public class ReadBenchmark {
 
-    private static final String benchmarkFolder = "benchmarks";
+    private static final String benchmarkFolder75 = "benchmarks75";
+    private static final String benchmarkFolder25 = "benchmarks25";
 
-    public static HashMap<String,ReadCnfFile> readBenchmark(){
+    public static HashMap<String,ReadCnfFile> readBenchmark75(){
         System.out.println(System.getProperty("user.dir"));
         HashMap<String,ReadCnfFile> files = new HashMap<>();
-        for(String file : Objects.requireNonNull(new File(benchmarkFolder).list())){
-            files.put(file, new ReadCnfFile(benchmarkFolder + File.separator + file));
+        for(String file : Objects.requireNonNull(new File(benchmarkFolder75).list())){
+            files.put(file, new ReadCnfFile(benchmarkFolder75 + File.separator + file));
+        }
+        return files;
+    }
+
+    public static HashMap<String,ReadCnfFile> readBenchmark25(){
+        System.out.println(System.getProperty("user.dir"));
+        HashMap<String,ReadCnfFile> files = new HashMap<>();
+        for(String file : Objects.requireNonNull(new File(benchmarkFolder25).list())){
+            files.put(file, new ReadCnfFile(benchmarkFolder25 + File.separator + file));
         }
         return files;
     }

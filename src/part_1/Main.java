@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args){
-        //WriteCSV.writeBFS(ReadBenchmark.readBenchmark());
+        //WriteCSV.writeBFS(ReadBenchmark.readBenchmark25());
 
         SAT sat = SAT.createSAT("benchmarks/uf20-01.cnf");
 
