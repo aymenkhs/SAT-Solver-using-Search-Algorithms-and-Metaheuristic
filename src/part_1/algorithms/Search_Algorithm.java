@@ -13,6 +13,8 @@ public abstract class Search_Algorithm {
 
     protected boolean isSatisfiable;
 
+    protected ArrayList<Integer> solution = null;
+
     protected int limit = -1;
 
     public Search_Algorithm(SAT sat) {
@@ -48,6 +50,7 @@ public abstract class Search_Algorithm {
 
             if (is_goal(node)) {
                 this.isSatisfiable = true;
+                this.solution = node.getVars();
                 return node.getVars();
             }
 
@@ -88,7 +91,16 @@ public abstract class Search_Algorithm {
         return isSatisfiable;
     }
 
-    public int binarySearch(LinkedList<Node> open, int value){
+    public ArrayList<Integer> getSolution() {
+
+        if (solution == null){
+            System.out.println( "Either the solution doesn't exist (isn't satisfiable) or you didn't run the solve methode" );
+        }
+
+        return solution;
+    }
+
+    protected int binarySearch(LinkedList<Node> open, int value){
         int a = 0, b = open.size() - 1;
         int c = (a + b)/2;
 
