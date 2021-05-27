@@ -8,11 +8,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class WriteCSV {
+public class Solve_and_Save {
 
     private static final String resultsFolder = "results";
 
-    public static void writeBFS(HashMap<String, ReadCnfFile> satStructures){
+    public static void solve_BFS(HashMap<String, ReadCnfFile> satStructures){
         double time;
         Search_Algorithm algorithm;
 
@@ -28,7 +28,8 @@ public class WriteCSV {
             for (String bench: satStructures.keySet()){
                 SAT sat = SAT.createSAT(satStructures.get(bench));
                 algorithm = new Breadth_first_search(sat);
-                time = algorithm.solve_time();
+                algorithm.solve_time();
+                time = algorithm.getTime();
                 String str = bench + "," + algorithm.isSatisfiable() + "," + time + "\n";
                 csvWriter.append(str);
                 csvWriter.flush( );
@@ -41,7 +42,7 @@ public class WriteCSV {
 
     }
 
-    public static void writeDFS(HashMap<String, ReadCnfFile> satStructures, int begin, int end, int step){
+    public static void solve_DFS(HashMap<String, ReadCnfFile> satStructures, int begin, int end, int step){
         double time;
         Search_Algorithm algorithm;
 
@@ -58,7 +59,8 @@ public class WriteCSV {
                 SAT sat = SAT.createSAT(satStructures.get(bench));
                 for (int limit=begin; limit<=end; limit+=step){
                     algorithm = new depth_first_search(sat, limit);
-                    time = algorithm.solve_time();
+                    algorithm.solve_time();
+                    time = algorithm.getTime();
                     String str = bench + "," + limit + "," + algorithm.isSatisfiable( ) + "," + time + "\n";
                     csvWriter.append(str);
                     csvWriter.flush( );
@@ -72,7 +74,7 @@ public class WriteCSV {
 
     }
 
-    public static void writeAStar(HashMap<String, ReadCnfFile> satStructures){
+    public static void solve_AStar(HashMap<String, ReadCnfFile> satStructures){
         File directory = new File(resultsFolder  + File.separator+ "part1");
         if (! directory.exists()){
             directory.mkdir();
@@ -121,7 +123,9 @@ public class WriteCSV {
             default:
                 throw new IllegalStateException("Unexpected value: " + i);
         }
-        time = algorithm.solve_time();
+
+        algorithm.solve_time();
+        time = algorithm.getTime();
         return bench + "," + i + "," + algorithm.isSatisfiable( ) + "," + time + "\n";
     }
 }

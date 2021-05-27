@@ -13,6 +13,8 @@ public abstract class Search_Algorithm {
 
     protected boolean isSatisfiable;
 
+    protected double time;
+
     protected ArrayList<Integer> solution = null;
 
     protected int limit = -1;
@@ -79,12 +81,12 @@ public abstract class Search_Algorithm {
         return  null;
     }
 
-    public double solve_time(){
+    public void solve_time(){
         long startTime = System.nanoTime( );
         this.solve();
         long endTime = System.nanoTime( );
         long results =  (endTime - startTime);
-        return (double) results/1000000000;
+        this.time = (double) results/1000000000;
     }
 
     public boolean isSatisfiable() {
@@ -116,5 +118,9 @@ public abstract class Search_Algorithm {
         }
 
         return open.get(c).getValue() < value ? c : c + 1;
+    }
+
+    public double getTime() {
+        return time;
     }
 }
