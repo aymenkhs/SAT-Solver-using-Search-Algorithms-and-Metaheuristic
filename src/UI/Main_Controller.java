@@ -37,6 +37,7 @@ public class Main_Controller implements Initializable {
         algorithm_combox.getItems().add("A* - Heuristic 3");
         algorithm_combox.getItems().add("A* - Heuristic 4");
         algorithm_combox.getItems().add("A* - Heuristic 5");
+        algorithm_combox.getItems().add("Particle Swarm Optimization");
 
     }
 

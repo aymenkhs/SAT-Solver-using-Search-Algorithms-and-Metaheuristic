@@ -1,13 +1,14 @@
 package part_1.algorithms;
 
 
+import utils.Algorithm;
 import utils.sat_structure.SAT;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 
-public abstract class Search_Algorithm {
+public abstract class Search_Algorithm implements Algorithm {
 
     protected SAT sat;
 
@@ -35,7 +36,10 @@ public abstract class Search_Algorithm {
         return node.getSatisfiedClauses().size() == sat.getNbClauses();
     }
 
+    @Override
     public void solve(){
+
+        long startTime = System.nanoTime( );
 
         LinkedList<Node> open = new LinkedList<>();
 
@@ -78,20 +82,19 @@ public abstract class Search_Algorithm {
 
         // Solution not found
         System.out.println("Not satisfiable");
-    }
 
-    public void solve_time(){
-        long startTime = System.nanoTime( );
-        this.solve();
-        long endTime = System.nanoTime( );
+
+        long endTime = System.nanoTime();
         long results =  (endTime - startTime);
         this.time = (double) results/1000000000;
     }
 
+    @Override
     public boolean isSatisfiable() {
         return isSatisfiable;
     }
 
+    @Override
     public ArrayList<Integer> getSolution() {
 
         if (solution == null){
@@ -119,7 +122,16 @@ public abstract class Search_Algorithm {
         return open.get(c).getValue() < value ? c : c + 1;
     }
 
+    @Override
     public double getTime() {
         return time;
+    }
+
+    @Override
+    public boolean isGoal_reached() { return true; }
+
+    @Override
+    public double getPercent_done() {
+        return 100;
     }
 }

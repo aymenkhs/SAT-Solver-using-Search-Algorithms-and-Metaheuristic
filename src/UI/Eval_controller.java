@@ -10,6 +10,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import part_1.algorithms.*;
+import part_2.algorithms.PSO;
+import utils.Algorithm;
 import utils.sat_structure.SAT;
 
 import java.io.IOException;
@@ -75,7 +77,8 @@ public class Eval_controller {
 
             SAT sat = SAT.createSAT(file_path);
 
-            Search_Algorithm algorithm;
+            Algorithm algorithm;
+
             switch (algorithm_name) {
 
                 case "Depth First":
@@ -99,6 +102,11 @@ public class Eval_controller {
                 case "A* - Heuristic 5":
                     algorithm = new AStarHeuristic5(sat);
                     break;
+                case "Particle Swarm Optimization":
+                    algorithm = new PSO(sat, 10, 1,1,1,1, 100000 );
+                    break;
+
+
                 default:
                     throw new IllegalStateException("Unexpected value: " + algorithm_name);
             }

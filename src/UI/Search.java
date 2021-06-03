@@ -1,15 +1,15 @@
 package UI;
 
 import javafx.concurrent.Task;
-import part_1.algorithms.Search_Algorithm;
+import utils.Algorithm;
 
-class Search extends Task<Search_Algorithm> {
+class Search extends Task<Algorithm> {
 
-    Search_Algorithm algorithm;
+    Algorithm algorithm;
     Eval_controller controller;
 
 
-    public Search(Eval_controller controller, Search_Algorithm algorithm){
+    public Search(Eval_controller controller, Algorithm algorithm){
         super();
 
         this.controller = controller;
@@ -18,13 +18,13 @@ class Search extends Task<Search_Algorithm> {
 
 
     @Override
-    protected Search_Algorithm call() throws Exception {
+    protected Algorithm call() throws Exception {
 
         controller.add_trace("Searching...");
 
         try {
 
-            algorithm.solve_time();
+            algorithm.solve();
 
         }catch (OutOfMemoryError error){
 

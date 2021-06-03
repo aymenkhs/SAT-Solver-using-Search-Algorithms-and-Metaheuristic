@@ -5,7 +5,7 @@ import part_1.algorithms.A_Star;
 import part_1.algorithms.Breadth_first_search;
 import part_1.algorithms.depth_first_search;
 import utils.sat_structure.SAT;
-import utils.ReadBenchmark;
+import utils.read.ReadBenchmark;
 import utils.Solve_and_Save;
 
 public class Main {
@@ -23,15 +23,15 @@ public class Main {
 
         double time;
 
-        algo3.solve_time();
+        algo3.solve();
         time = algo3.getTime();
         System.out.println( "A* " + time);
 
-        algo1.solve_time();
+        algo1.solve();
         time = algo1.getTime();
         System.out.println( "depth " + time);
 
-        algo2.solve_time();
+        algo2.solve();
         time = algo2.getTime();
         System.out.println( "Breadth " + time);
     }

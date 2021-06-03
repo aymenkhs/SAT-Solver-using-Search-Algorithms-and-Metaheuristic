@@ -1,6 +1,7 @@
 package utils;
 
 import part_1.algorithms.*;
+import utils.read.ReadCnfFile;
 import utils.sat_structure.SAT;
 
 import java.io.File;
@@ -28,7 +29,7 @@ public class Solve_and_Save {
             for (String bench: satStructures.keySet()){
                 SAT sat = SAT.createSAT(satStructures.get(bench));
                 algorithm = new Breadth_first_search(sat);
-                algorithm.solve_time();
+                algorithm.solve();
                 time = algorithm.getTime();
                 String str = bench + "," + algorithm.isSatisfiable() + "," + time + "\n";
                 csvWriter.append(str);
@@ -59,7 +60,7 @@ public class Solve_and_Save {
                 SAT sat = SAT.createSAT(satStructures.get(bench));
                 for (int limit=begin; limit<=end; limit+=step){
                     algorithm = new depth_first_search(sat, limit);
-                    algorithm.solve_time();
+                    algorithm.solve();
                     time = algorithm.getTime();
                     String str = bench + "," + limit + "," + algorithm.isSatisfiable( ) + "," + time + "\n";
                     csvWriter.append(str);
@@ -124,7 +125,7 @@ public class Solve_and_Save {
                 throw new IllegalStateException("Unexpected value: " + i);
         }
 
-        algorithm.solve_time();
+        algorithm.solve();
         time = algorithm.getTime();
         return bench + "," + i + "," + algorithm.isSatisfiable( ) + "," + time + "\n";
     }

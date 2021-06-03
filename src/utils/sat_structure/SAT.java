@@ -1,7 +1,7 @@
 package utils.sat_structure;
 
 
-import utils.ReadCnfFile;
+import utils.read.ReadCnfFile;
 
 import java.util.ArrayList;
 import java.util.HashSet;

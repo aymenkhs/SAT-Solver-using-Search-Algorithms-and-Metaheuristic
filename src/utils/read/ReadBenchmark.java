@@ -1,4 +1,4 @@
-package utils;
+package utils.read;
 
 import java.io.File;
 import java.util.HashMap;
@@ -11,7 +11,7 @@ public class ReadBenchmark {
     private static final String benchmarkFolder75 = BENCHMARKS_FOLDER + "/benchmarks75";
     private static final String benchmarkFolder25 = BENCHMARKS_FOLDER + "/benchmarks20";
 
-    public static HashMap<String,ReadCnfFile> readBenchmark75(){
+    public static HashMap<String, ReadCnfFile> readBenchmark75(){
 
         HashMap<String,ReadCnfFile> files = new HashMap<>();
         for(String file : Objects.requireNonNull(new File(benchmarkFolder75).list())){

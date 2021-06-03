@@ -1,12 +1,12 @@
 package part_2.algorithms;
 
+import utils.Algorithm;
 import utils.sat_structure.SAT;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class PSO {
+public class PSO implements Algorithm {
 
 
     private double w, c1,c2;
@@ -94,7 +94,7 @@ public class PSO {
 
 
 
-
+    @Override
     public void solve(){
 
 
@@ -172,26 +172,25 @@ public class PSO {
 
     }
 
+    @Override
     public double getPercent_done() {
         return percent_done;
     }
 
-    public void setPercent_done(double percent_done) {
-        this.percent_done = percent_done;
-    }
+    @Override
+    public boolean isSatisfiable() { return isGoal_reached(); }
 
-    public double getCurrent_best_evaluation() {
-        return current_best_evaluation;
-    }
-
+    @Override
     public double getTime() {
         return time;
     }
 
+    @Override
     public ArrayList<Integer> getSolution() {
         return solution;
     }
 
+    @Override
     public boolean isGoal_reached() {
         return goal_reached;
     }
