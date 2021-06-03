@@ -26,13 +26,13 @@ public class Particle {
     }
 
 
-    public static ArrayList<Integer> get_binary(double position){
+    public static ArrayList<Integer> get_binary(double position, int num_variables){
 
 
         BigInteger big_num = BigDecimal.valueOf(position).toBigInteger();
         StringBuilder binary_string = new StringBuilder(big_num.toString(2));
 
-        while (binary_string.length() != 20){
+        while (binary_string.length() != num_variables){
 
             binary_string.insert(0, "0");
         }
@@ -51,9 +51,9 @@ public class Particle {
 
 
 
-    public ArrayList<Integer> get_binary(){
+    public ArrayList<Integer> get_binary(int num_variables){
 
-        return get_binary(this.position);
+        return get_binary(this.position, num_variables);
     }
 
     public double getBest_evaluation() {

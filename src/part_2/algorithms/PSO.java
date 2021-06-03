@@ -54,7 +54,7 @@ public class PSO implements Algorithm {
     private double evaluate_position(Particle particle){
 
         // fitness function is the number of satisfied clauses
-        ArrayList<Integer> p_solution = particle.get_binary();
+        ArrayList<Integer> p_solution = particle.get_binary(sat.getNbVariables());
         return sat.get_nb_verified_clauses(p_solution);
     }
 
@@ -160,7 +160,7 @@ public class PSO implements Algorithm {
         long results =  (endTime - startTime);
         this.time = (double) results/1000000000;
 
-        this.solution = Particle.get_binary(g_best);
+        this.solution = Particle.get_binary(g_best, sat.getNbVariables());
 
         if(current_best_evaluation == sat.getNbClauses()){
             this.goal_reached = true;

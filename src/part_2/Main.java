@@ -8,8 +8,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        SAT sat = SAT.createSAT("benchmarks\\benchmarks20\\uf20-01.cnf");
-        PSO pso = new PSO(sat, 10, 1,1,1,1, 100000 );
+        //SAT sat = SAT.createSAT("benchmarks\\benchmarks20\\uf20-01.cnf");
+        SAT sat = SAT.createSAT("benchmarks\\benchmarks75\\uf75-03.cnf");
+        PSO pso = new PSO(sat, 30, 1,1,1,1, 10000 );
         pso.solve();
 
         System.out.println("Time : " + pso.getTime());
