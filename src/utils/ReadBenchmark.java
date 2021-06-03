@@ -1,4 +1,4 @@
-package part_1.services;
+package utils;
 
 import java.io.File;
 import java.util.HashMap;

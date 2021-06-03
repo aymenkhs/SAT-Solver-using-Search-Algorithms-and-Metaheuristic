@@ -1,9 +1,12 @@
 package part_1;
 
-import part_1.algorithms.*;
-import part_1.algorithms.sat_structure.SAT;
-import part_1.services.ReadBenchmark;
-import part_1.services.Solve_and_Save;
+import part_1.algorithms.AStarHeuristic2;
+import part_1.algorithms.A_Star;
+import part_1.algorithms.Breadth_first_search;
+import part_1.algorithms.depth_first_search;
+import utils.sat_structure.SAT;
+import utils.ReadBenchmark;
+import utils.Solve_and_Save;
 
 public class Main {
     public static void main(String[] args){

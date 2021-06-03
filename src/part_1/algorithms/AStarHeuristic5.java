@@ -1,6 +1,6 @@
 package part_1.algorithms;
 
-import part_1.algorithms.sat_structure.SAT;
+import utils.sat_structure.SAT;
 
 public class AStarHeuristic5 extends A_Star {
 

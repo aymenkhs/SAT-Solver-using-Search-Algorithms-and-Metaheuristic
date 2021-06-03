@@ -1,4 +1,4 @@
-package part_1.algorithms.sat_structure;
+package utils.sat_structure;
 
 import java.util.ArrayList;
 
@@ -11,7 +11,7 @@ public class Clause {
         this.literals = new ArrayList<>();
         String[] parts = clauseString.split(" ");
         for (String part:parts){
-            if (!part.equals("0") && !part.isBlank()){
+            if (!part.equals("0") && !part.trim().isEmpty()){
                 literals.add(Integer.parseInt(part));
             }
         }
@@ -24,6 +24,10 @@ public class Clause {
     @Override
     public String toString() {
         return "C" + numClause;
+    }
+
+    public int getNumClause() {
+        return numClause;
     }
 
     public ArrayList<Integer> getLiterals() {

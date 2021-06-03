@@ -1,7 +1,6 @@
 package UI;
 
-import javafx.concurrent.Task;
-import javafx.embed.swing.JFXPanel;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,13 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
-
 import javafx.stage.Stage;
 import part_1.algorithms.*;
-import part_1.algorithms.sat_structure.SAT;
+import utils.sat_structure.SAT;
 
 import java.io.IOException;
-
 import java.util.ArrayList;
 
 

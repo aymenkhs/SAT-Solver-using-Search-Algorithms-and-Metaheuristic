@@ -1,6 +1,7 @@
 package part_1.algorithms;
 
-import part_1.algorithms.sat_structure.SAT;
+import utils.sat_structure.SAT;
+
 import java.util.LinkedList;
 
 public abstract class A_Star extends Search_Algorithm {
@@ -11,6 +12,7 @@ public abstract class A_Star extends Search_Algorithm {
 
     @Override
     protected Node set_Node_Value(Node node) {
+
         int H = heuristic(node);
         int G = node.getSatisfiedClausesNode().size();
         node.setValue(G + H);

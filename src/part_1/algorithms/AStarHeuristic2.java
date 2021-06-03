@@ -1,7 +1,7 @@
 package part_1.algorithms;
 
-import part_1.algorithms.sat_structure.Clause;
-import part_1.algorithms.sat_structure.SAT;
+import utils.sat_structure.Clause;
+import utils.sat_structure.SAT;
 
 import java.util.HashSet;
 import java.util.Set;

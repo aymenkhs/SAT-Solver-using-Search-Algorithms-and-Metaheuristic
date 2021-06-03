@@ -1,9 +1,10 @@
-package part_1.algorithms.sat_structure;
+package utils.sat_structure;
 
 
-import part_1.services.ReadCnfFile;
+import utils.ReadCnfFile;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class SAT {
 
@@ -61,5 +62,20 @@ public class SAT {
             clauses.add(new Clause(CNFFile.listClauses.indexOf(clauseString), clauseString));
         }
         return new SAT(CNFFile.numVariables, CNFFile.numClauses, clauses);
+    }
+
+    public double get_nb_verified_clauses(ArrayList<Integer> solution){
+
+        HashSet<Clause> satisfiableClauses = new HashSet<>();
+
+        for (int i = 0; i < solution.size(); i++){
+
+
+            //System.out.println("Solution size " + solution.size());
+            int index = solution.get(i) == 1 ? (i+1) : -(i+1);
+            satisfiableClauses.addAll(this.get(index));
+        }
+
+        return satisfiableClauses.size();
     }
 }

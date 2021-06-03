@@ -1,7 +1,7 @@
-package part_1.services;
+package utils;
 
 import part_1.algorithms.*;
-import part_1.algorithms.sat_structure.SAT;
+import utils.sat_structure.SAT;
 
 import java.io.File;
 import java.io.FileWriter;

@@ -1,4 +1,4 @@
-package part_1.services;
+package utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -40,7 +40,7 @@ public class ReadCnfFile {
         String[] parts = startLine.split(" ");
         int i = 0;
         while(true){
-            if(!parts[i].isBlank() && !parts[i].equals("p") && !parts[i].equals("cnf")){
+            if(!parts[i].trim().isEmpty() && !parts[i].equals("p") && !parts[i].equals("cnf")){
                 break;
             } else {
                 i++;
@@ -49,7 +49,7 @@ public class ReadCnfFile {
         numVariables = Integer.parseInt(parts[i]);
         i++;
         while(true){
-            if(!parts[i].isBlank()){
+            if(!parts[i].trim().isEmpty()){
                 break;
             } else {
                 i++;

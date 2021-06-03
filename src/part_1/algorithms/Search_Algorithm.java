@@ -1,7 +1,7 @@
 package part_1.algorithms;
 
 
-import part_1.algorithms.sat_structure.SAT;
+import utils.sat_structure.SAT;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -35,7 +35,7 @@ public abstract class Search_Algorithm {
         return node.getSatisfiedClauses().size() == sat.getNbClauses();
     }
 
-    public ArrayList<Integer> solve(){
+    public void solve(){
 
         LinkedList<Node> open = new LinkedList<>();
 
@@ -53,7 +53,7 @@ public abstract class Search_Algorithm {
             if (is_goal(node)) {
                 this.isSatisfiable = true;
                 this.solution = node.getVars();
-                return node.getVars();
+                return;
             }
 
             // if it's not a goal
@@ -78,7 +78,6 @@ public abstract class Search_Algorithm {
 
         // Solution not found
         System.out.println("Not satisfiable");
-        return  null;
     }
 
     public void solve_time(){
@@ -96,7 +95,7 @@ public abstract class Search_Algorithm {
     public ArrayList<Integer> getSolution() {
 
         if (solution == null){
-            System.out.println( "Either the solution doesn't exist (isn't satisfiable) or you didn't run the solve methode" );
+            System.out.println( "Either the solution doesn't exist (isn't satisfiable) or you didn't run the solve method" );
         }
 
         return solution;

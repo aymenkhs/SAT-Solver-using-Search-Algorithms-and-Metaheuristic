@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
-
 <AnchorPane prefHeight="400.0" prefWidth="700.0" stylesheets="@Menu.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Eval_controller">
    <children>
       <Button layoutX="80.0" layoutY="346.0" mnemonicParsing="false" onAction="#launch" prefHeight="33.0" prefWidth="109.0" styleClass="btn" text="Launch" />
