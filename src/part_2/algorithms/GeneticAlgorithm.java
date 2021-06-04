@@ -15,16 +15,36 @@ public class GeneticAlgorithm implements Algorithm {
     // if "numberGenerations" = -1 then their wil be no limit for the number of iteration
     private final int numberGenerations, populationSize;
 
+    private ArrayList<Individual> population;
+
     public GeneticAlgorithm(int populationSize) {
         this.populationSize = populationSize;
         // the default value of the number of generation is -1, in this case their wil be no limit for the number of iteration
         this.numberGenerations = -1;
+        this.population = new ArrayList<>(  );
     }
 
     public GeneticAlgorithm(int populationSize, int numberGenerations) {
         this.populationSize = populationSize;
         // if the the number of generation is specified then wer're gonna do at most "numberGenerations" iterations
         this.numberGenerations = numberGenerations;
+        this.population = new ArrayList<>(  );
+    }
+
+    private Individual crossOver(){
+        return new Individual(new ArrayList<>(  ));
+    }
+
+    private void mutation(){
+
+    }
+
+    private void selection(){
+
+    }
+
+    private void sortingPopulation(){
+
     }
 
     @Override
