@@ -4,6 +4,7 @@ import utils.Algorithm;
 import utils.sat_structure.SAT;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class GeneticAlgorithm implements Algorithm {
 
@@ -84,12 +85,13 @@ public class GeneticAlgorithm implements Algorithm {
     }
 
     private void sortingPopulation(){
-
+        Collections.sort(this.population, new IndividualComparator());
     }
 
     private void initializePopulation(){
+        this.population = new ArrayList<>(  );
         for(int i=0; i<this.populationSize; i++){
-            population.add(Individual.generateIndividual(sat.getNbVariables()));
+            this.population.add(Individual.generateIndividual(sat.getNbVariables()));
         }
     }
 

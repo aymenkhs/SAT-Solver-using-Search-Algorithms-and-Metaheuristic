@@ -9,14 +9,14 @@ public class Individual {
 
     private ArrayList<Integer> genome;
 
-    private double score;
+    private int score;
 
     public Individual(ArrayList<Integer> genome) {
         this.genome = genome;
     }
 
-    public double fitnessFunction(SAT sat){
-        this.score = sat.get_nb_verified_clauses(genome);
+    public int fitnessFunction(SAT sat){
+        this.score = (int) sat.get_nb_verified_clauses(genome);
         return this.score;
     }
 
@@ -36,5 +36,9 @@ public class Individual {
             genome.add(rand.nextInt(2));
         }
         return new Individual(genome);
+    }
+
+    public int getScore() {
+        return score;
     }
 }
