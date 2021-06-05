@@ -69,6 +69,10 @@ public class GeneticAlgorithm implements Algorithm {
             if (bestIndividual.getScore() < population.get(0).getScore()){
                 bestIndividual = population.get(0);
             }
+
+            if (bestIndividual.getScore() == sat.getNbClauses()){
+                this.goal_reached = true;
+            }
         }
     }
 
@@ -141,7 +145,6 @@ public class GeneticAlgorithm implements Algorithm {
 
         long results =  (endTime - startTime);
         this.time = (double) results/1000000000;
-
     }
 
     @Override
@@ -151,7 +154,7 @@ public class GeneticAlgorithm implements Algorithm {
 
     @Override
     public ArrayList<Integer> getSolution() {
-        return this.solution;
+        return this.bestIndividual.getSolution();
     }
 
     @Override
@@ -161,7 +164,7 @@ public class GeneticAlgorithm implements Algorithm {
 
     @Override
     public double getPercent_done() {
-        return 0;
+        return (bestIndividual.getScore() / sat.getNbClauses()) * 100;
     }
 
     @Override
