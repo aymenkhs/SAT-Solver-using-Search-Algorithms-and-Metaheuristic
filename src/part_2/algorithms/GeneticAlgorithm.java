@@ -5,6 +5,7 @@ import utils.sat_structure.SAT;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 public class GeneticAlgorithm implements Algorithm {
 
@@ -51,19 +52,44 @@ public class GeneticAlgorithm implements Algorithm {
 
             ArrayList<Individual> selectedParents = selection();
             // we make a crossover between each of the selected parents
-            // we make mutation between to the children generation
+            makeCrossOvers(selectedParents);
+
+            // we make mutations to the children generation
+            makeMutations();
+
+            // we add our best individual to the children population (we don't want to lose it)
+            childrens.add(bestIndividual);
+
             // we evaluate the childrens then sort them
             population = childrens;
             evaluatePopulation();
             sortingPopulation();
 
             // if the best individual of this generation is better then the current best one then we take it as our best individual
+            if (bestIndividual.getScore() < population.get(0).getScore()){
+                bestIndividual = population.get(0);
+            }
         }
     }
 
-    private Individual crossOver(){
-        // we're gonna use a single point crossover to merge two individuals
-        return new Individual(new ArrayList<>(  ));
+    private void makeCrossOvers(ArrayList<Individual> selectedParents){
+        for (int i=0; i<selectedParents.size(); i++){
+            for (int j=i+1; j<selectedParents.size(); j++){
+                childrens.add(selectedParents.get(i).crossOver(selectedParents.get(j)));
+                childrens.add(selectedParents.get(j).crossOver(selectedParents.get(i)));
+            }
+        }
+
+        while (childrens.size() < this.populationSize - 1){
+            childrens.add(Individual.generateIndividual(sat.getNbVariables()));
+        }
+    }
+
+
+    private void makeMutations(){
+        for (Individual individual: childrens){
+            individual.mutation();
+        }
     }
 
     private ArrayList<Individual> selection(){
@@ -85,7 +111,7 @@ public class GeneticAlgorithm implements Algorithm {
     }
 
     private void sortingPopulation(){
-        Collections.sort(this.population, new IndividualComparator());
+        this.population.sort(new IndividualComparator( ));
     }
 
     private void initializePopulation(){
@@ -101,7 +127,7 @@ public class GeneticAlgorithm implements Algorithm {
         } else if (this.numberGenerations == -1){
             return false;
         } else {
-            return this.numberGenerations > this.currentGeneration;
+            return this.numberGenerations < this.currentGeneration;
         }
     }
 

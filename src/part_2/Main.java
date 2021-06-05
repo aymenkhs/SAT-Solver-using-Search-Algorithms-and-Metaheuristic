@@ -14,6 +14,7 @@ public class Main {
 
         GeneticAlgorithm ga = new GeneticAlgorithm(sat, 20, 30);
         ga.solve();
+
         PSO pso = new PSO(sat, 30, 1,1,1,1, 10000 );
         pso.solve();
 
