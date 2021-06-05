@@ -4,8 +4,6 @@ import utils.Algorithm;
 import utils.sat_structure.SAT;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
 
 public class GeneticAlgorithm implements Algorithm {
 
@@ -73,6 +71,7 @@ public class GeneticAlgorithm implements Algorithm {
             if (bestIndividual.getScore() == sat.getNbClauses()){
                 this.goal_reached = true;
             }
+            currentGeneration++;
         }
     }
 
@@ -164,7 +163,8 @@ public class GeneticAlgorithm implements Algorithm {
 
     @Override
     public double getPercent_done() {
-        return (bestIndividual.getScore() / sat.getNbClauses()) * 100;
+        double fraction = ( (double) bestIndividual.getScore() / sat.getNbClauses());
+        return  fraction * 100;
     }
 
     @Override
