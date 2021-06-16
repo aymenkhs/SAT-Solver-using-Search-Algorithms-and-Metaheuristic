@@ -2,6 +2,7 @@ package part_2;
 
 import part_2.algorithms.GeneticAlgorithm;
 import part_2.algorithms.PSO;
+import utils.Solve_and_Save;
 import utils.sat_structure.SAT;
 
 public class Main {
@@ -10,6 +11,8 @@ public class Main {
 
         SAT sat = SAT.createSAT("benchmarks\\benchmarks20\\uf20-01.cnf");
         //SAT sat = SAT.createSAT("benchmarks\\benchmarks75\\uf75-01.cnf");
+
+        //Solve_and_Save.solvePso();
 
         GeneticAlgorithm ga = new GeneticAlgorithm(sat, 100, 10000);
         ga.solve();
@@ -26,6 +29,5 @@ public class Main {
         System.out.println("Goal reached : " + pso.isGoal_reached());
         System.out.println("Solution : " + pso.getSolution());
         System.out.println(pso.getPercent_done() + "% of clauses were resolved");
-
     }
 }
