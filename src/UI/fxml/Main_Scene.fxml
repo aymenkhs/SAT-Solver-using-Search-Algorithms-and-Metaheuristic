@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Line?>
-<GridPane alignment="center" hgap="10" prefHeight="390.0" prefWidth="702.0" stylesheets="@Menu.css" vgap="10" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Main_Controller">
+<GridPane alignment="center" hgap="10" prefHeight="390.0" prefWidth="702.0" stylesheets="@../style/Menu.css" vgap="10" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.controllers.Main_Controller">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>

@@ -1,6 +1,7 @@
-package UI;
+package UI.controllers;
 
 
+import UI.Search;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,7 +11,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import part_1.algorithms.*;
-import part_2.algorithms.PSO;
+import part_2.algorithms.GA.GeneticAlgorithm;
+import part_2.algorithms.PSO.PSO;
 import utils.Algorithm;
 import utils.sat_structure.SAT;
 
@@ -30,6 +32,8 @@ public class Eval_controller {
     private TextArea trace_Text_area;
     @FXML
     private TextArea time_Text_area;
+    @FXML
+    private TextArea percent_Text_area;
     @FXML
     private ListView<String> solution_list;
 
@@ -51,8 +55,8 @@ public class Eval_controller {
         dataset_name_Text_area.setText(file_name);
 
         trace_Text_area.editableProperty().setValue(false);
-
         time_Text_area.editableProperty().setValue(false);
+        percent_Text_area.editableProperty().setValue(false);
 
         this.algorithm_name = algorithm_name;
         this.file_path = file_path;
@@ -62,7 +66,7 @@ public class Eval_controller {
     private  void back() throws IOException {
 
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("Main_Scene.fxml"));
+        loader.setLocation(getClass().getResource("../fxml/Main_Scene.fxml"));
         Parent main_scene = loader.load();
         Stage window = (Stage) back.getScene().getWindow();
         window.setScene(new Scene(main_scene));
@@ -105,7 +109,9 @@ public class Eval_controller {
                 case "Particle Swarm Optimization":
                     algorithm = new PSO(sat, 10, 1,1,1,1, 100000 );
                     break;
-
+                case "Genetic Algorithm":
+                    algorithm = new GeneticAlgorithm(sat, 100, 10000);
+                    break;
 
                 default:
                     throw new IllegalStateException("Unexpected value: " + algorithm_name);
@@ -132,6 +138,8 @@ public class Eval_controller {
     public void set_time(String time){
         time_Text_area.setText(time);
     }
+
+    public void set_percent(String percent){percent_Text_area.setText(percent);}
 
     public void set_solution(ArrayList<Integer> solution){
 

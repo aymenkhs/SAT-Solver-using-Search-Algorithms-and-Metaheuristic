@@ -1,4 +1,4 @@
-package part_2.algorithms;
+package part_2.algorithms.PSO;
 
 import utils.Algorithm;
 import utils.sat_structure.SAT;

@@ -1,6 +1,7 @@
 package utils;
 
 import part_1.algorithms.*;
+import part_2.algorithms.PSO.PSO;
 import utils.read.ReadCnfFile;
 import utils.sat_structure.SAT;
 
@@ -129,4 +130,81 @@ public class Solve_and_Save {
         time = algorithm.getTime();
         return bench + "," + i + "," + algorithm.isSatisfiable( ) + "," + time + "\n";
     }
+
+
+    /* PSO */
+
+    private static  String executePso(String bench, SAT sat, int num_particles, float w, double c1, double c2, double initial_velocity, int max_iteration){
+
+        //executer PSO
+        PSO pso = new PSO(sat, num_particles,w,c1,c2,1,max_iteration);
+        pso.solve();
+        //Sauvegarder dans le csv
+        return  bench + "," + max_iteration + "," + num_particles + "," + c1 + "," + c2 + "," + w + "," + pso.getPercent_done() +"," + pso.getTime() +"\n";
+
+    }
+    public static void solvePso(){
+        /*
+            execute Pso algorithm with different paramters and save results into pso.csv
+            TODO: maybe adding a funtion to get the best parameters, i don't know if it's realy
+                    necessary
+         */
+
+        //loop through the iteration
+        int[] iterations = {100,200,300,400,500,1000},
+                particles = {50,100,200,};
+
+        double[] c1 ={1,2},
+                c2 ={1,2};
+
+        float w[] = {0.5F,1},
+              numTraining ;
+
+
+        //WArNING : If you are on windows you might need to  change the / to \\
+        SAT sat = SAT.createSAT("benchmarks/benchmarks20/uf20-01.cnf");
+        String bench= "uf20-01";
+        numTraining = 0 ;
+
+
+        File directory = new File(resultsFolder  + File.separator+ "part2");
+        if (! directory.exists()){
+            directory.mkdir();
+        }
+        try{
+            FileWriter csvWriter = new FileWriter( resultsFolder  + File.separator+ "part2" + File.separator + "pso.csv");
+            csvWriter.append("file,iteration,particles,c1,c2,w,percentDone,executionTime\n");
+            System.out.println("Executing PSO please wait ... ");
+            for(int ws=0;ws<w.length;ws++) {
+
+                for(int c1in=0;c1in<c1.length;c1in++){
+
+                    for (int c2in=0;c2in<c2.length;c2in++){
+
+                        for(int par=0;par<particles.length;par++){
+
+                            for (int ite=0;ite<iterations.length;ite++) {
+
+                                String res = executePso(bench,sat,particles[par],w[ws],c1[c1in],c2[c2in],1,iterations[ite]);
+                                csvWriter.append(res);
+                                csvWriter.flush();
+                                numTraining++;
+                            }
+                        }
+                    }
+                }
+           }
+            if (numTraining != iterations.length*particles.length*c1.length*c2.length*w.length){
+                System.out.println("ERROR in execution of PSO ");
+            }
+                csvWriter.close();
+            System.out.println("Execution finished succesfuly.");
+
+        } catch (IOException E){
+            System.out.println( "Error in CVS file" );
+        }
+
+
+    }
 }
+

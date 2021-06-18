@@ -1,9 +1,10 @@
 package UI;
 
+import UI.controllers.Eval_controller;
 import javafx.concurrent.Task;
 import utils.Algorithm;
 
-class Search extends Task<Algorithm> {
+public class Search extends Task<Algorithm> {
 
     Algorithm algorithm;
     Eval_controller controller;
@@ -44,17 +45,12 @@ class Search extends Task<Algorithm> {
 
         String time = Double.toString(algorithm.getTime());
 
-        if(algorithm.isSatisfiable()) {
-            controller.add_trace("\nThe dataset is satisfiable");
-            controller.add_trace("\nSolution found in " + time + " seconds");
-        }else {
-
-            controller.add_trace("\nthe dataset is not satisfiable");
-            controller.add_trace("\nExecution time : " + time + " seconds");
-        }
+        controller.add_trace("\nDone");
+        controller.add_trace("\nExecution time : " + time + " seconds");
 
         controller.set_time( time + " seconds");
         controller.set_solution(algorithm.getSolution());
+        controller.set_percent(algorithm.getPercent_done() + " %");
 
 
     }

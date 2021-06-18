@@ -1,5 +1,3 @@
-import part_2.algorithms.Particle;
-
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Random;

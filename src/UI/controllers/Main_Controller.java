@@ -1,5 +1,6 @@
-package UI;
+package UI.controllers;
 
+import UI.controllers.Eval_controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,6 +39,7 @@ public class Main_Controller implements Initializable {
         algorithm_combox.getItems().add("A* - Heuristic 4");
         algorithm_combox.getItems().add("A* - Heuristic 5");
         algorithm_combox.getItems().add("Particle Swarm Optimization");
+        algorithm_combox.getItems().add("Genetic Algorithm");
 
     }
 
@@ -57,7 +59,7 @@ public class Main_Controller implements Initializable {
 
 
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("Eval_Scene.fxml"));
+            loader.setLocation(getClass().getResource("../fxml/Eval_Scene.fxml"));
             Parent eval_scene = loader.load();
 
             Eval_controller controller = loader.getController();
