@@ -2,6 +2,7 @@ package utils;
 
 import part_1.algorithms.*;
 import part_2.algorithms.PSO.PSO;
+import part_2.algorithms.GA.GeneticAlgorithm;
 import utils.read.ReadCnfFile;
 import utils.sat_structure.SAT;
 
@@ -143,7 +144,7 @@ public class Solve_and_Save {
         return  bench + "," + max_iteration + "," + num_particles + "," + c1 + "," + c2 + "," + w + "," + pso.getPercent_done() +"," + pso.getTime() +"\n";
 
     }
-    public static void solvePso(){
+    public static void solvePso(HashMap<String, ReadCnfFile> satStructures){
         /*
             execute Pso algorithm with different paramters and save results into pso.csv
             TODO: maybe adding a funtion to get the best parameters, i don't know if it's realy
@@ -161,50 +162,110 @@ public class Solve_and_Save {
               numTraining ;
 
 
-        //WArNING : If you are on windows you might need to  change the / to \\
-        SAT sat = SAT.createSAT("benchmarks/benchmarks20/uf20-01.cnf");
-        String bench= "uf20-01";
         numTraining = 0 ;
 
+        File directory = new File(resultsFolder  + File.separator + "part2");
+        if (! directory.exists()){
+            directory.mkdir();
+        }
 
-        File directory = new File(resultsFolder  + File.separator+ "part2");
+        directory = new File(resultsFolder  + File.separator + "part2" + File.separator + "pso");
         if (! directory.exists()){
             directory.mkdir();
         }
         try{
-            FileWriter csvWriter = new FileWriter( resultsFolder  + File.separator+ "part2" + File.separator + "pso.csv");
-            csvWriter.append("file,iteration,particles,c1,c2,w,percentDone,executionTime\n");
             System.out.println("Executing PSO please wait ... ");
-            for(int ws=0;ws<w.length;ws++) {
+            for (String bench: satStructures.keySet()){
+                SAT sat = SAT.createSAT(satStructures.get(bench));
+                FileWriter csvWriter = new FileWriter( resultsFolder  + File.separator+ "part2"  + File.separator + "pso" + File.separator + "pso_" + bench + ".csv");
+                csvWriter.append("file,iteration,particles,c1,c2,w,percentDone,executionTime\n");
+                for (float v : w) {
 
-                for(int c1in=0;c1in<c1.length;c1in++){
+                    for (double value : c1) {
 
-                    for (int c2in=0;c2in<c2.length;c2in++){
+                        for (double item : c2) {
 
-                        for(int par=0;par<particles.length;par++){
+                            for (int particle : particles) {
 
-                            for (int ite=0;ite<iterations.length;ite++) {
+                                for (int iteration : iterations) {
 
-                                String res = executePso(bench,sat,particles[par],w[ws],c1[c1in],c2[c2in],1,iterations[ite]);
-                                csvWriter.append(res);
-                                csvWriter.flush();
-                                numTraining++;
+                                    String res = executePso(bench, sat, particle, v, value, item, 1, iteration);
+                                    csvWriter.append(res);
+                                    csvWriter.flush( );
+                                    numTraining++;
+                                }
                             }
                         }
                     }
                 }
-           }
+                csvWriter.close();
+            }
             if (numTraining != iterations.length*particles.length*c1.length*c2.length*w.length){
                 System.out.println("ERROR in execution of PSO ");
             }
-                csvWriter.close();
             System.out.println("Execution finished succesfuly.");
 
         } catch (IOException E){
-            System.out.println( "Error in CVS file" );
+            System.out.println( E );
         }
 
+    }
 
+    private static  String executeGA(String bench, SAT sat, int nbGenerations, int sizePopulation){
+
+        //executer PSO
+        GeneticAlgorithm ga = new GeneticAlgorithm(sat, nbGenerations, sizePopulation);
+        ga.solve();
+        //Sauvegarder dans le csv
+        return  bench + "," + sizePopulation + "," + nbGenerations + "," + ga.getPercent_done() +"," + ga.getTime() +"\n";
+
+    }
+    public static void solveGA(HashMap<String, ReadCnfFile> satStructures){
+        /*
+            execute Pso algorithm with different paramters and save results into pso.csv
+            TODO: maybe adding a funtion to get the best parameters, i don't know if it's realy
+                    necessary
+         */
+
+        //loop through the iteration
+        int nbGeneration_min = 10, nbGeneration_max = 100, gen_step = 10;
+
+        int sizePop_min = 50, sizePop_max = 500, pop_step = 50;
+
+        int numTraining = 0;
+
+
+        File directory = new File(resultsFolder  + File.separator + "part2");
+        if (! directory.exists()){
+            directory.mkdir();
+        }
+
+        directory = new File(resultsFolder  + File.separator + "part2" + File.separator + "ga");
+        if (! directory.exists()){
+            directory.mkdir();
+        }
+        try{
+            System.out.println("Executing Genetic Algorithm please wait ... ");
+            for (String bench: satStructures.keySet()){
+                SAT sat = SAT.createSAT(satStructures.get(bench));
+                FileWriter csvWriter = new FileWriter( resultsFolder  + File.separator+ "part2"  + File.separator + "ga" + File.separator + "ga_" + bench + ".csv");
+                csvWriter.append("file,iteration,particles,c1,c2,w,percentDone,executionTime\n");
+                for (int popsize=sizePop_min; popsize<=sizePop_max; popsize+=pop_step) {
+
+                    for (int nbGen=nbGeneration_min; nbGen<=nbGeneration_max; nbGen+=gen_step) {
+                        String res = executeGA(bench, sat, popsize, nbGen);
+                        csvWriter.append(res);
+                        csvWriter.flush( );
+                        numTraining++;
+                    }
+                }
+                csvWriter.close();
+            }
+            System.out.println("Execution finished succesfuly.");
+
+        } catch (IOException E){
+            System.out.println( E );
+        }
     }
 }
 

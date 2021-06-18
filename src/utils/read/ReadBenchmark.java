@@ -15,7 +15,8 @@ public class ReadBenchmark {
 
         HashMap<String,ReadCnfFile> files = new HashMap<>();
         for(String file : Objects.requireNonNull(new File(benchmarkFolder75).list())){
-            files.put(file, new ReadCnfFile(benchmarkFolder75 + File.separator + file));
+            String fileName = file.substring(0, file.length() - 4);
+            files.put(fileName, new ReadCnfFile(benchmarkFolder75 + File.separator + file));
         }
         return files;
     }
